@@ -1,47 +1,66 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app">
+    <!-- 导航栏 -->
+    <el-header>
+      <!-- 导航菜单 -->
+      <el-menu mode="horizontal">
+        <el-menu-item>
+          <router-link to="/dashboard" class="router-link">数据看板</router-link>
+        </el-menu-item>
+        <el-menu-item>
+          <router-link to="/members" class="router-link">会员列表</router-link>
+        </el-menu-item>
+        <el-menu-item>
+          <router-link to="/products" class="router-link">销售产品</router-link>
+        </el-menu-item>
+        <el-menu-item>
+          <router-link to="/venues" class="router-link">场地查看</router-link>
+        </el-menu-item>
+        <el-menu-item>
+          <router-link to="/finance" class="router-link">财务总结</router-link>
+        </el-menu-item>
+        <!-- 其他导航链接 -->
+      </el-menu>
+    </el-header>
+    <!-- 页面内容 -->
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+  </div>
 </template>
 
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
+el-menu {
+  background-color: transparent;
+  border-bottom: none;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+el-menu-item {
+  padding: 0 20px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.router-link {
+  text-decoration: none;
+  color: inherit;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+
+main {
+  padding: 20px;
+  background-color: #f2f2f2;
+  min-height: calc(100vh - 64px); /* Adjust based on header height */
 }
 </style>
+
+
+
+
+
+
