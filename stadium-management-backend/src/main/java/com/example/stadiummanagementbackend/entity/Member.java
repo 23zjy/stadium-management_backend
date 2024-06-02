@@ -10,6 +10,5 @@ public class Member {
     private String phone;
     private String created_at;
     private int remaining_balance;
-
     private int[] coupon_id;
 }
